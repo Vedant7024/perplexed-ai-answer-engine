@@ -1,0 +1,605 @@
+@import "tailwindcss";
+
+@theme {
+  /* ================================
+     CORE PALETTE
+  ================================= */
+
+  --color-bg: #080b12;
+
+  --color-surface: #0e131c;
+  --color-surface-2: #141b27;
+  --color-surface-hover: #192232;
+
+  --color-border: #202a39;
+  --color-border-strong: #304055;
+
+  --color-accent: #5b8cff;
+  --color-accent-light: #79a2ff;
+  --color-accent-dim: #273b70;
+
+  --color-highlight: #55d6c2;
+  --color-highlight-soft: #193a38;
+
+  --color-text-primary: #f5f7fb;
+  --color-text-secondary: #b3bdcb;
+  --color-text-tertiary: #6e7a8b;
+
+  --color-danger: #ff7777;
+
+  /* ================================
+     TYPOGRAPHY
+  ================================= */
+
+  --font-sans:
+    "Plus Jakarta Sans",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-serif:
+    "Libre Baskerville",
+    Georgia,
+    serif;
+
+  --font-mono:
+    "JetBrains Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+/* ==================================
+   GLOBAL
+================================== */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  background: #080b12;
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      700px 400px at 50% -180px,
+      rgba(91, 140, 255, 0.13),
+      transparent 70%
+    ),
+    radial-gradient(
+      500px 300px at 100% 20%,
+      rgba(85, 214, 194, 0.035),
+      transparent 70%
+    ),
+    #080b12;
+
+  color: var(--color-text-primary);
+
+  font-family: var(--font-sans);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background: rgba(91, 140, 255, 0.28);
+  color: #ffffff;
+}
+
+/* ==================================
+   SCROLLBAR
+================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #293547;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4b62;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #293547 transparent;
+}
+
+/* ==================================
+   HIDE SCROLLBAR
+================================== */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==================================
+   ANSWER CONTAINER
+================================== */
+
+.prose-answer {
+  width: 100%;
+
+  color: var(--color-text-primary);
+
+  font-family: var(--font-sans);
+
+  font-size: 0.96rem;
+
+  line-height: 1.82;
+
+  letter-spacing: -0.006em;
+}
+
+/* ==================================
+   HEADINGS
+================================== */
+
+.prose-answer h1,
+.prose-answer h2,
+.prose-answer h3 {
+  color: #f7f9fc;
+
+  line-height: 1.28;
+
+  letter-spacing: -0.03em;
+
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.prose-answer h1 {
+  font-family: var(--font-serif);
+
+  font-size: 1.5rem;
+
+  font-weight: 400;
+}
+
+.prose-answer h2 {
+  font-size: 1.2rem;
+
+  font-weight: 650;
+}
+
+.prose-answer h3 {
+  font-size: 1rem;
+
+  font-weight: 650;
+}
+
+/* ==================================
+   PARAGRAPHS
+================================== */
+
+.prose-answer p {
+  margin-top: 0;
+
+  margin-bottom: 1.05em;
+}
+
+.prose-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================================
+   LISTS
+================================== */
+
+.prose-answer ul,
+.prose-answer ol {
+  margin-top: 0.65em;
+
+  margin-bottom: 1.05em;
+
+  padding-left: 1.35rem;
+}
+
+.prose-answer ul {
+  list-style: none;
+}
+
+.prose-answer ul > li {
+  position: relative;
+}
+
+.prose-answer ul > li::before {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  left: -1rem;
+  top: 0.78em;
+
+  border-radius: 50%;
+
+  background: var(--color-highlight);
+
+  box-shadow:
+    0 0 8px rgba(85, 214, 194, 0.35);
+}
+
+.prose-answer ol {
+  list-style: decimal;
+}
+
+.prose-answer li {
+  margin-bottom: 0.5em;
+
+  padding-left: 0.15rem;
+
+  color: var(--color-text-secondary);
+}
+
+/* ==================================
+   LINKS
+================================== */
+
+.prose-answer a {
+  color: var(--color-accent-light);
+
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.prose-answer a:hover {
+  color: #a8c0ff;
+
+  border-bottom-color: rgba(121, 162, 255, 0.5);
+}
+
+/* ==================================
+   STRONG
+================================== */
+
+.prose-answer strong {
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+/* ==================================
+   EMPHASIS
+================================== */
+
+.prose-answer em {
+  color: #c2cad6;
+}
+
+/* ==================================
+   BLOCKQUOTE
+================================== */
+
+.prose-answer blockquote {
+  position: relative;
+
+  margin: 1.25em 0;
+
+  padding: 0.9em 1.1em;
+
+  border: 1px solid #253247;
+
+  border-left: 3px solid var(--color-accent);
+
+  border-radius: 0 10px 10px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(91, 140, 255, 0.055),
+      rgba(91, 140, 255, 0)
+    );
+
+  color: var(--color-text-secondary);
+}
+
+/* ==================================
+   INLINE CODE
+================================== */
+
+.prose-answer code {
+  padding: 0.18em 0.45em;
+
+  border: 1px solid #263448;
+
+  border-radius: 5px;
+
+  background: #101722;
+
+  color: #86aaff;
+
+  font-family: var(--font-mono);
+
+  font-size: 0.82em;
+}
+
+/* ==================================
+   CODE BLOCK
+================================== */
+
+.prose-answer pre {
+  position: relative;
+
+  overflow-x: auto;
+
+  margin: 1.15em 0;
+
+  padding: 1.1rem 1.15rem;
+
+  border: 1px solid #253247;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0b111a,
+      #0d141e
+    );
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.prose-answer pre::before {
+  content: "";
+
+  display: block;
+
+  width: 34px;
+  height: 6px;
+
+  margin-bottom: 14px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5b8cff 0 33%,
+      #55d6c2 33% 66%,
+      #667085 66% 100%
+    );
+
+  opacity: 0.7;
+}
+
+.prose-answer pre code {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #d8e1ed;
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+}
+
+/* ==================================
+   TABLE
+================================== */
+
+.prose-answer table {
+  width: 100%;
+
+  margin: 1.2em 0;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 11px;
+
+  background: rgba(14, 19, 28, 0.8);
+
+  font-size: 0.87rem;
+}
+
+.prose-answer th,
+.prose-answer td {
+  padding: 0.7em 0.85em;
+
+  border-right: 1px solid var(--color-border);
+
+  border-bottom: 1px solid var(--color-border);
+
+  text-align: left;
+}
+
+.prose-answer th:last-child,
+.prose-answer td:last-child {
+  border-right: none;
+}
+
+.prose-answer tr:last-child td {
+  border-bottom: none;
+}
+
+.prose-answer th {
+  background: #151d29;
+
+  color: #edf2f8;
+
+  font-weight: 650;
+}
+
+.prose-answer td {
+  color: var(--color-text-secondary);
+}
+
+/* ==================================
+   HORIZONTAL RULE
+================================== */
+
+.prose-answer hr {
+  margin: 1.8rem 0;
+
+  border: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==================================
+   IMAGES
+================================== */
+
+.prose-answer img {
+  display: block;
+
+  max-width: 100%;
+
+  height: auto;
+
+  margin: 1.1rem 0;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* ==================================
+   STREAMING CARET
+================================== */
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.streaming-caret {
+  display: inline-block;
+
+  width: 2px;
+
+  height: 1.05em;
+
+  margin-left: 4px;
+
+  vertical-align: -0.1em;
+
+  border-radius: 999px;
+
+  background: var(--color-highlight);
+
+  box-shadow:
+    0 0 7px rgba(85, 214, 194, 0.45);
+
+  animation:
+    caret-blink 0.85s steps(1) infinite;
+}
+
+/* ==================================
+   FOCUS STATES
+================================== */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+
+  outline-offset: 3px;
+
+  border-radius: 5px;
+}
+
+/* ==================================
+   DISABLED ELEMENTS
+================================== */
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.5;
+}
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 640px) {
+  .prose-answer {
+    font-size: 0.93rem;
+
+    line-height: 1.75;
+  }
+
+  .prose-answer h1 {
+    font-size: 1.3rem;
+  }
+
+  .prose-answer h2 {
+    font-size: 1.1rem;
+  }
+
+  .prose-answer pre {
+    margin-left: -4px;
+    margin-right: -4px;
+
+    border-radius: 9px;
+  }
+
+  .prose-answer table {
+    display: block;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+}
