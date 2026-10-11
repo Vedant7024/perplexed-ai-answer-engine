@@ -1,3 +1,4 @@
+
 import express from "express";
 import cors from "cors";
 import chatRoutes from "./routes/chat.js";
@@ -6,7 +7,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      process.env.FRONTEND_URL,
+    ].filter((url): url is string => Boolean(url)),
   })
 );
 
