@@ -7,8 +7,6 @@ import LoadingSkeleton from "./LoadingSkeleton";
 import ErrorMessage from "./ErrorMessage";
 import ImageResultsGrid from "./ImageResultsGrid";
 import VideoResultsGrid from "./VideoResultsGrid";
-import RedditGlyph from "../search/RedditGlyph";
-import YoutubeGlyph from "../search/YoutubeGlyph";
 import { getFocusModeMeta } from "../../lib/utils";
 import type { ConversationTurn } from "../../types";
 

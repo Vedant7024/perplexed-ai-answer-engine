@@ -1,6 +1,5 @@
 import {
   Globe,
-  GraduationCap,
   ImageIcon,
   Video,
   PenLine,
@@ -17,8 +16,6 @@ export interface FocusModeMeta {
   icon: LucideIcon;
 }
 
-// Reddit doesn't ship a lucide icon, so we render its glyph as inline SVG
-// (see RedditGlyph below) rather than pulling in a whole brand-icon package.
 export const FOCUS_MODES: FocusModeMeta[] = [
   {
     id: "webSearch",
@@ -26,27 +23,6 @@ export const FOCUS_MODES: FocusModeMeta[] = [
     shortLabel: "Web",
     description: "Search across the entire web",
     icon: Globe,
-  },
-  {
-    id: "academicSearch",
-    label: "Academic",
-    shortLabel: "Academic",
-    description: "Search academic papers and journals",
-    icon: GraduationCap,
-  },
-  {
-    id: "redditSearch",
-    label: "Reddit",
-    shortLabel: "Reddit",
-    description: "Search discussions on Reddit",
-    icon: Globe, // overridden with RedditGlyph where rendered
-  },
-  {
-    id: "youtubeSearch",
-    label: "YouTube",
-    shortLabel: "YouTube",
-    description: "Search videos on YouTube",
-    icon: Video, // overridden with YoutubeGlyph where rendered
   },
   {
     id: "imageSearch",

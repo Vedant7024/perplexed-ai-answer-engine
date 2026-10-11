@@ -3,9 +3,6 @@
 
 export type FocusMode =
   | "webSearch"
-  | "academicSearch"
-  | "redditSearch"
-  | "youtubeSearch"
   | "imageSearch"
   | "videoSearch"
   | "writingAssistant";
@@ -14,9 +11,6 @@ export type Provider = "groq" | "gemini";
 
 export const STREAMING_MODES: FocusMode[] = [
   "webSearch",
-  "academicSearch",
-  "redditSearch",
-  "youtubeSearch",
   "writingAssistant",
 ];
 
