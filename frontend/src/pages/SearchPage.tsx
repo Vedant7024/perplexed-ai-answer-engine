@@ -79,7 +79,7 @@ export default function SearchPage() {
   const isBusy = turns.length > 0 && turns[turns.length - 1].status === "streaming";
 
   return (
-    <div className="min-h-full flex flex-col">
+    <div className="search-page min-h-full flex flex-col">
       <Header />
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 md:px-6 pb-44">
         <ChatThread

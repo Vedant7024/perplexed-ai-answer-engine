@@ -1653,3 +1653,80 @@ html:has(#theme-toggle:checked) .send {
     right: 14px;
   }
 }
+
+
+/* LANDING PAGE ONLY: phone/tablet par theme toggle ko upar-right corner me rakho */
+@media (max-width: 1200px) {
+  html:has(.home-page) .theme-float {
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    bottom: auto;
+    right: 14px;
+  }
+}
+
+/* ==================================
+   MOBILE FIXES (all phones)
+================================== */
+
+/* 1. Pages always fill the real visible screen height (handles mobile address bar) */
+.home-page,
+.search-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* 2. Stop phones from inflating text, and stop sideways scrolling.
+      "clip" (not "hidden") so the sticky header keeps working. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+html,
+body {
+  overflow-x: clip;
+}
+
+/* 3. Long words / URLs in answers wrap instead of widening the page */
+.prose-answer {
+  overflow-wrap: anywhere;
+}
+
+/* 4. Focus dropdown never goes wider than the screen */
+[role="listbox"] {
+  max-width: calc(100vw - 2rem);
+}
+
+/* 5. Phones: 16px input text, so iPhones don't zoom the page when you tap the box */
+@media (max-width: 640px) {
+  .box textarea,
+  .box-compact textarea {
+    font-size: 16px;
+  }
+}
+
+/* 6. Small phones (iPhone SE/mini, small Androids) */
+@media (max-width: 380px) {
+  .home-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .home-page h1 {
+    font-size: 1.6rem;
+  }
+  .chip {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+  .box textarea {
+    padding: 14px 14px 4px;
+  }
+}
+
+/* 7. Short screens (landscape phones): don't waste space, let the page scroll */
+@media (max-height: 520px) {
+  .home-page {
+    justify-content: flex-start;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
