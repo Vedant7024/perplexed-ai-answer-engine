@@ -44,7 +44,7 @@ export default function Home() {
             className="text-3xl md:text-4xl text-text-primary text-center"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            Hello Shriyaa let's get started with Perplexed!
+            Where knowledge begins
           </h1>
           <p className="mt-3 text-sm md:text-base text-text-tertiary text-center">
             Ask anything. Get answers with sources, not just links.
