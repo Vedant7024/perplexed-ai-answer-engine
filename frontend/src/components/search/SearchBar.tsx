@@ -56,11 +56,7 @@ export default function SearchBar({
   const isLarge = size === "large";
 
   return (
-    <div
-      className={`w-full rounded-2xl border border-border-strong bg-surface shadow-lg shadow-black/20 focus-within:border-accent-dim transition-colors ${
-        isLarge ? "p-3" : "p-2.5"
-      }`}
-    >
+    <div className={`box w-full ${isLarge ? "" : "box-compact"}`}>
       <textarea
         ref={textareaRef}
         value={value}
@@ -69,12 +65,9 @@ export default function SearchBar({
         placeholder={placeholder}
         rows={1}
         disabled={disabled}
-        className={`w-full resize-none bg-transparent outline-none placeholder:text-text-tertiary text-text-primary ${
-          isLarge ? "text-base min-h-[28px]" : "text-sm min-h-[22px]"
-        }`}
       />
 
-      <div className={`flex items-center justify-between ${isLarge ? "mt-2.5" : "mt-2"}`}>
+      <div className="bar">
         <div className="flex items-center gap-2">
           <FocusModeSelector value={focusMode} onChange={onFocusModeChange} compact={!isLarge} />
           {isLarge && (
@@ -82,9 +75,9 @@ export default function SearchBar({
               type="button"
               disabled
               title="Attach a file (not implemented)"
-              className="flex items-center gap-1 rounded-full border border-border-strong px-2.5 py-1.5 text-xs text-text-tertiary opacity-50 cursor-not-allowed"
+              className="pill"
             >
-              <Paperclip size={13} />
+              <Paperclip size={14} />
             </button>
           )}
         </div>
@@ -94,13 +87,7 @@ export default function SearchBar({
           onClick={handleSubmit}
           disabled={disabled || !value.trim()}
           aria-label="Submit search"
-          className={`flex items-center justify-center rounded-full transition-colors ${
-            isLarge ? "w-9 h-9" : "w-7 h-7"
-          } ${
-            value.trim() && !disabled
-              ? "bg-accent-light text-black hover:bg-white"
-              : "bg-surface-2 text-text-tertiary cursor-not-allowed"
-          }`}
+          className="send"
         >
           <ArrowUp size={isLarge ? 18 : 15} strokeWidth={2.5} />
         </button>
