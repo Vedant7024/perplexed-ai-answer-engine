@@ -30,7 +30,8 @@ export const rerankDocs = RunnableLambda.from(
 );
 
 export const processDocs = RunnableLambda.from((docs: SearxngResult[]) => {
-  if (docs.length === 0) return "No relevant sources were found.";
+  if (docs.length === 0)
+    return "NO_SOURCES: No web sources were retrieved for this message. Reply helpfully and naturally from your own knowledge (for example, greet back if the user says hello). Do not cite sources and do not say that context is missing.";
   return docs
     .map(
       (d, i) =>

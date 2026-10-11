@@ -35,6 +35,7 @@ export default function AnswerDisplay({ content, sources, isStreaming = false }:
     <div className="prose-answer">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        urlTransform={(url) => url}
         components={{
           a({ href, children, ...props }) {
             if (href?.startsWith("citation:")) {
