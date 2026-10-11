@@ -603,7 +603,6 @@ body::after {
   background:conic-gradient(from var(--angle),var(--color-accent),var(--color-highlight),#a78bfa,var(--color-accent));
   filter:blur(10px);
   opacity:.65;
-  animation:spin 6s linear infinite;
 }
 
 .mark::after {
@@ -804,9 +803,8 @@ kbd {
 }
 
 .box:focus-within {
-  background:linear-gradient(180deg,var(--color-surface-2),var(--color-surface)) padding-box,conic-gradient(from var(--angle),var(--color-accent),var(--color-highlight),#a78bfa,var(--color-accent)) border-box;
-  animation:spin 5s linear infinite;
-  box-shadow:0 0 0 5px rgba(91,140,255,.07),0 0 70px -12px rgba(91,140,255,.45),0 24px 60px rgba(var(--sh),.45);
+  background:linear-gradient(180deg,var(--color-surface-2),var(--color-surface)) padding-box,linear-gradient(120deg,var(--color-accent),var(--color-highlight)) border-box;
+  box-shadow:0 0 0 4px rgba(91,140,255,.1),0 20px 60px rgba(var(--sh),.4);
 }
 
 .box textarea {
@@ -941,6 +939,18 @@ kbd {
   border-color:var(--color-accent-dim);
   color:var(--c-heading);
   transform:translateY(-2px);
+}
+
+.box-compact textarea {
+  min-height:44px;
+  padding:12px 16px 4px;
+  font-size:.92rem;
+}
+
+.box-compact .send {
+  width:32px;
+  height:32px;
+  border-radius:10px;
 }
 
 /* ==================================
@@ -1312,7 +1322,14 @@ body.chat .dock {
 /* ==================================
    FOCUS STATES / DISABLED
 ================================== */
-button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible {
+.box textarea:focus,
+.box textarea:focus-visible {
+  outline:none;
+  box-shadow:none;
+  border-radius:0;
+}
+
+button:focus-visible,input:focus-visible,a:focus-visible {
   outline:2px solid var(--color-accent);
   outline-offset:3px;
   border-radius:5px;
