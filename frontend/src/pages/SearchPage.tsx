@@ -15,9 +15,16 @@ export default function SearchPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const { turns, submit, retry } = useChat();
-  const [focusMode, setFocusMode] = useState<FocusMode>(
-    (location.state as LocationState)?.focusMode ?? "webSearch"
-  );
+
+  // sawal pehle state se lo, na mile to URL (?q=...) se lo
+  const state = location.state as LocationState | null;
+  const params = new URLSearchParams(location.search);
+  const urlQuery = params.get("q") ?? undefined;
+  const urlFocus = (params.get("focus") as FocusMode | null) ?? undefined;
+  const startQuery = state?.initialQuery ?? urlQuery;
+  const startFocus: FocusMode = state?.focusMode ?? urlFocus ?? "webSearch";
+
+  const [focusMode, setFocusMode] = useState<FocusMode>(startFocus);
 
   const didInit = useRef(false);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -28,13 +35,21 @@ export default function SearchPage() {
     if (didInit.current) return;
     didInit.current = true;
 
-    const state = location.state as LocationState | null;
-    if (!state?.initialQuery) {
-      // arrived directly at /search with nothing to search for
+    if (!startQuery) {
+      // /search par aaye lekin kuch search karne ko nahi
       navigate("/", { replace: true });
       return;
     }
-    submit(state.initialQuery, state.focusMode ?? "webSearch");
+
+    submit(startQuery, startFocus);
+
+    // URL mein sawal likh do, taaki refresh ya share karne par bhi chale
+    if (!urlQuery) {
+      navigate(
+        `/search?q=${encodeURIComponent(startQuery)}&focus=${startFocus}`,
+        { replace: true, state }
+      );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

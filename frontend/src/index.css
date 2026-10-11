@@ -1631,3 +1631,16 @@ html:has(#theme-toggle:checked) .send {
     transition:none!important;
   }
 }
+
+/* THEME PILL: follow-up bar ke upar rakho (overlap na ho) */
+@media (max-width: 1200px) {
+  .theme-float {
+    bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-float {
+    right: 14px;
+  }
+}
