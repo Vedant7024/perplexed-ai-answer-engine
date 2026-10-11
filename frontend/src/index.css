@@ -1644,3 +1644,12 @@ html:has(#theme-toggle:checked) .send {
     right: 14px;
   }
 }
+
+/* LANDING PAGE ONLY: phone/tablet par theme toggle ko upar-right corner me rakho */
+@media (max-width: 1200px) {
+  html:has(.home-page) .theme-float {
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    bottom: auto;
+    right: 14px;
+  }
+}

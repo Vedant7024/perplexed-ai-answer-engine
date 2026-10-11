@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-full flex flex-col items-center justify-center px-4 py-16">
+    <div className="home-page min-h-full flex flex-col items-center justify-center px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
