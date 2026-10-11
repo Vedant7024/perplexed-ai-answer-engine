@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FOCUS_MODES, getFocusModeMeta } from "../../lib/utils";
+import RedditGlyph from "./RedditGlyph";
+import YoutubeGlyph from "./YoutubeGlyph";
 import type { FocusMode } from "../../types";
 
 interface Props {
@@ -12,6 +14,8 @@ interface Props {
 }
 
 function ModeIcon({ mode, size = 15 }: { mode: FocusMode; size?: number }) {
+  if (mode === "redditSearch") return <RedditGlyph size={size} />;
+  if (mode === "youtubeSearch") return <YoutubeGlyph size={size} />;
   const Icon = getFocusModeMeta(mode).icon;
   return <Icon size={size} strokeWidth={2} />;
 }
@@ -29,9 +33,7 @@ export default function FocusModeSelector({ value, onChange, compact = false }: 
       }
     }
     document.addEventListener("mousedown", onClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", onClickOutside);
-    };
+    return () =>  { document.removeEventListener("mousedown", onClickOutside); };
   }, []);
 
   function handleToggle() {
@@ -39,7 +41,7 @@ export default function FocusModeSelector({ value, onChange, compact = false }: 
       const rect = rootRef.current?.getBoundingClientRect();
 
       if (rect) {
-        const menuHeight = 260;
+        const menuHeight = 350;
         const spaceBelow = window.innerHeight - rect.bottom;
         const spaceAbove = rect.top;
 
@@ -73,13 +75,15 @@ export default function FocusModeSelector({ value, onChange, compact = false }: 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: dropUp ? 6 : -6, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: dropUp ? 6 : -6, scale: 0.98 }}
+            initial={{opacity: 0,y: dropUp ? 6 : -6,scale: 0.98,}}
+            animate={{opacity: 1,y: 0,scale: 1,}}
+            exit={{opacity: 0,y: dropUp ? 6 : -6,scale: 0.98,}}
             transition={{ duration: 0.14 }}
             role="listbox"
             className={`absolute z-30 w-64 rounded-xl border border-border bg-surface shadow-2xl shadow-black/50 p-1.5 ${
-              dropUp ? "bottom-full mb-2" : "top-full mt-2"
+              dropUp
+                ? "bottom-full mb-2"
+                : "top-full mt-2"
             }`}
           >
             {FOCUS_MODES.map((mode) => (
