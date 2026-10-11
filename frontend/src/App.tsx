@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
-// @ts-expect-error - ThemeSwitch is authored in JS and no declaration file exists yet
 import ThemeSwitch from "./ThemeSwitch";
 
 export default function App() {
