@@ -24,7 +24,7 @@ export const rerankDocs = RunnableLambda.from(
     // keep good matches, but never return an empty list
     const good = scored.filter((r) => r.score > 0.3);
     return (good.length ? good : scored.slice(0, 5))
-      .slice(0, 8)
+      .slice(0, 5)
       .map((r) => r.doc);
   }
 );
@@ -32,6 +32,9 @@ export const rerankDocs = RunnableLambda.from(
 export const processDocs = RunnableLambda.from((docs: SearxngResult[]) => {
   if (docs.length === 0) return "No relevant sources were found.";
   return docs
-    .map((d, i) => `${i + 1}. ${d.title}\n${d.content}\nURL: ${d.url}`)
+    .map(
+      (d, i) =>
+        `${i + 1}. ${d.title}\n${(d.content || "").slice(0, 400)}\nURL: ${d.url}`
+    )
     .join("\n\n");
 });
