@@ -32,13 +32,7 @@ export default function ChatTurn({ turn, onSuggestionSelect, onRetry }: Props) {
       <QueryBubble query={turn.query} />
 
       <div className="flex items-center gap-1.5 mt-3 mb-4 text-xs font-medium text-text-tertiary">
-        {turn.focusMode === "redditSearch" ? (
-          <RedditGlyph size={13} />
-        ) : turn.focusMode === "youtubeSearch" ? (
-          <YoutubeGlyph size={13} />
-        ) : (
-          <Icon size={13} />
-        )}
+        <Icon size={13} />
         <span>{meta.label}</span>
       </div>
 
